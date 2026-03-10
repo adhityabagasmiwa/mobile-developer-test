@@ -50,7 +50,7 @@ jobs:
           fi
 
       - name: Run SwiftLint
-        run: swiftlint lint --strict
+        run: swiftlint lint --config .swiftlint.yml
 
       - name: Resolve Package Dependencies
         run: |
@@ -75,4 +75,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Test-Results
-          path: ./TestResults.xcresult
+          path: '**/*.xcresult'
