@@ -20,9 +20,21 @@ struct ImageListView: View {
         .toolbar(.hidden, for: .navigationBar)
         .background(Color.white.ignoresSafeArea(edges: .top))
         .onAppear {
-            if viewModel.images.isEmpty {
+            viewModel.getImages()
+        }
+        .alert(
+            "Error",
+            isPresented: Binding<Bool>(
+                get: { viewModel.errorMessage != nil },
+                set: { _ in viewModel.errorMessage = nil }
+            ),
+            presenting: viewModel.errorMessage ?? ""
+        ) { _ in
+            Button("Retry", role: .cancel) {
                 viewModel.getImages()
             }
+        } message: { errorMessage in
+            Text(errorMessage)
         }
     }
     

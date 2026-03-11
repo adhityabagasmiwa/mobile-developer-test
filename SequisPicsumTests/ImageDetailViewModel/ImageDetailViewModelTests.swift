@@ -86,7 +86,7 @@ struct ImageDetailViewModelTests {
         // Then
         #expect(sut.comments.isEmpty)
         #expect(sut.isLoading == false)
-        #expect(sut.errorMessage == "fetch failed")
+        #expect(sut.errorMessage?.value == "fetch failed")
     }
     
     @Test func test_addComment_success() async throws {
@@ -114,7 +114,7 @@ struct ImageDetailViewModelTests {
         sut.addComment()
         
         // Then
-        #expect(sut.errorMessage == "save failed")
+        #expect(sut.errorMessage?.value == "save failed")
         #expect(sut.comments.isEmpty)
     }
     
@@ -148,6 +148,6 @@ struct ImageDetailViewModelTests {
         
         // Then
         #expect(sut.comments.count == 1)
-        #expect(sut.errorMessage == "delete failed")
+        #expect(sut.errorMessage?.value == "delete failed")
     }
 }

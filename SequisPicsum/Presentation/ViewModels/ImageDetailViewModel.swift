@@ -9,10 +9,27 @@ import Foundation
 import Combine
 import SwiftUI
 
+enum CommentError {
+    case saveCommentFailed(message: String)
+    case getCommentsFailed(message: String)
+    case deleteCommentFailed(message: String, comment: UserComment)
+    
+    var value: String {
+        switch self {
+        case .saveCommentFailed(let message):
+            return message
+        case .getCommentsFailed(let message):
+            return message
+        case .deleteCommentFailed(let message, _):
+            return message
+        }
+    }
+}
+
 class ImageDetailViewModel: ObservableObject {
     @Published var image: ImagePicsum
     @Published var isLoading: Bool = false
-    @Published var errorMessage: String?
+    @Published var errorMessage: CommentError?
     @Published var comments: [UserComment] = []
     
     private var cancellables: Set<AnyCancellable> = []
@@ -51,7 +68,7 @@ extension ImageDetailViewModel {
         saveCommentUseCase.execute(request: request)
             .sink { [weak self] completion in
                 if case .failure(let error) = completion {
-                    self?.errorMessage = error.localizedDescription
+                    self?.errorMessage = .saveCommentFailed(message: error.localizedDescription)
                 }
             } receiveValue: { [weak self] in
                 withAnimation {
@@ -68,7 +85,7 @@ extension ImageDetailViewModel {
             .sink { [weak self] completion in
                 self?.isLoading = false
                 if case .failure(let error) = completion {
-                    self?.errorMessage = error.localizedDescription
+                    self?.errorMessage = .getCommentsFailed(message: error.localizedDescription)
                 }
             } receiveValue: { [weak self] domainComments in
                 self?.comments.append(contentsOf: domainComments)
@@ -84,7 +101,7 @@ extension ImageDetailViewModel {
         deleteCommentUseCase.execute(request: request)
             .sink { [weak self] completion in
                 if case .failure(let error) = completion {
-                    self?.errorMessage = error.localizedDescription
+                    self?.errorMessage = .deleteCommentFailed(message: error.localizedDescription, comment: comment)
                 }
             } receiveValue: { [weak self] in
                 self?.comments.removeAll { $0.id == comment.id }
