@@ -15,7 +15,8 @@ struct ImageDetailView: View {
         VStack(spacing: 0) {
             KFImage(URL(string: "https://picsum.photos/id/\(viewModel.image.id ?? "")/300"))
                 .placeholder {
-                    Color.gray.opacity(0.3)
+                    ProgressView()
+                        .padding()
                 }
                 .setProcessor(DownsamplingImageProcessor(size: CGSize(width: 300, height: 300)))
                 .scaleFactor(UIScreen.main.scale)
