@@ -4,6 +4,7 @@ SequisPicsum is a SwiftUI-based image explorer app that leverages the [Lorem Pic
 
 ## 🚀 Project Overview
 
+![Simulator Screen Recording - iPhone 16 Pro - 2026-03-11 at 23 00 06](https://github.com/user-attachments/assets/66830c97-830b-4bc5-b019-5307d0eaa575)
 
 
 ## 🛠 Tech Stack
