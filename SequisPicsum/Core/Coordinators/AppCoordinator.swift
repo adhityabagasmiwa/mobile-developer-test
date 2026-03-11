@@ -10,6 +10,7 @@ import SwiftUI
 enum AppRoute: Hashable {
     case splash
     case imageList
+    case imageDetail(image: ImagePicsum)
 }
 
 @MainActor

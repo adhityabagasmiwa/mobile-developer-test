@@ -58,4 +58,9 @@ extension ImageListViewModel {
             }
             .store(in: &cancellables)
     }
+    
+    @MainActor
+    func navigateToDetail(image: ImagePicsum) {
+        coordinator.push(.imageDetail(image: image))
+    }
 }
