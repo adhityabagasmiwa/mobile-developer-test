@@ -1,0 +1,31 @@
+# .swiftlint.yml
+# Custom Swiftlint rules to prevent strict failures on standard stylistic choices
+
+disabled_rules: # rule identifiers to exclude from running
+  - line_length
+  - trailing_whitespace
+  - function_body_length
+  - type_body_length
+  - file_length
+  - identifier_name
+  - nesting
+  - large_tuple
+
+opt_in_rules: # some rules are only opt-in
+  - empty_count
+  - force_unwrapping
+
+excluded: # paths to ignore during linting
+  - Pods
+  - Carthage
+  - DerivedData
+  - ".build"
+  - ".swiftpm"
+
+# configurable rules can be customized from this configuration file
+# binary rules can set their severity level
+force_cast: warning # implicitly
+force_try:
+  severity: warning # explicitly
+
+force_unwrapping: warning

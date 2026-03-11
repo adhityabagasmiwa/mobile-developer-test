@@ -1,0 +1,78 @@
+name: iOS CI
+
+on:
+  push:
+    branches: ["main", "develop"]
+  pull_request:
+    branches: ["main", "develop"]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-test:
+    name: Build and Test iOS App
+    runs-on: macos-latest
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Select Xcode Version
+        run: |
+          sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+          xcodebuild -version
+
+      - name: Install xcpretty
+        run: gem install xcpretty
+
+      - name: Cache Swift Packages
+        uses: actions/cache@v4
+        with:
+          path: DerivedData/SourcePackages
+          key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-spm-
+
+      - name: Cache Homebrew
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/Library/Caches/Homebrew/downloads
+            ~/Library/Caches/Homebrew/swiftlint
+          key: ${{ runner.os }}-brew-swiftlint
+
+      - name: Install SwiftLint
+        run: |
+          if ! command -v swiftlint &> /dev/null; then
+            brew install swiftlint
+          fi
+
+      - name: Run SwiftLint
+        run: swiftlint lint --config .swiftlint.yml
+
+      - name: Resolve Package Dependencies
+        run: |
+          xcodebuild -resolvePackageDependencies \
+            -project SequisPicsum.xcodeproj \
+            -clonedSourcePackagesDirPath ./DerivedData/SourcePackages
+
+      - name: Build and Test
+        run: |
+          set -o pipefail
+          xcodebuild clean test \
+            -project SequisPicsum.xcodeproj \
+            -scheme SequisPicsum \
+            -destination 'platform=iOS Simulator,name=iPhone 16 Pro' \
+            -clonedSourcePackagesDirPath ./DerivedData/SourcePackages \
+            -derivedDataPath ./DerivedData \
+            -enableCodeCoverage YES \
+            -resultBundlePath ./TestResults.xcresult | xcpretty
+
+      - name: Upload Test Results Artifact
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Test-Results
+          path: '**/*.xcresult'
