@@ -53,6 +53,6 @@ extension ImagePicsumAPI: TargetType {
     }
     
     var headers: [String : String]? {
-        ["Content-Type": "application/json"]
+        return ["Content-Type": "application/json"]
     }
 }
