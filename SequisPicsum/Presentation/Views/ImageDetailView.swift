@@ -76,14 +76,15 @@ struct CommentRowView: View {
     
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
-            Circle()
-                .fill(Color.gray.opacity(0.8))
-                .frame(width: 40, height: 40)
-                .overlay(
-                    Text(comment.authorInitial ?? "")
-                        .font(.subheadline)
-                        .foregroundColor(.white)
-                )
+            ZStack {
+                Circle()
+                    .fill(Color.gray.opacity(0.8))
+                    .frame(width: 40, height: 40)
+                
+                Text(comment.authorInitial ?? "")
+                    .font(.subheadline)
+                    .foregroundColor(.white)
+            }
             
             VStack(alignment: .leading, spacing: 4) {
                 Text(comment.authorFullName ?? "")
