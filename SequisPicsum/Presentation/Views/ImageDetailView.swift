@@ -62,6 +62,29 @@ struct ImageDetailView: View {
         .onAppear {
             viewModel.getComments()
         }
+        .alert(
+            "Error",
+            isPresented: Binding<Bool>(
+                get: { viewModel.errorMessage != nil },
+                set: { _ in viewModel.errorMessage = nil }
+            ),
+            presenting: viewModel.errorMessage
+        ) { activeError in
+            Button("Retry", role: .cancel) {
+                switch activeError {
+                case .saveCommentFailed:
+                    viewModel.addComment()
+                case .getCommentsFailed:
+                    viewModel.getComments()
+                case .deleteCommentFailed(_, let comment):
+                    viewModel.deleteComment(comment: comment)
+                case .none:
+                    break
+                }
+            }
+        } message: { errorMessage in
+            Text(errorMessage?.value ?? "")
+        }
     }
 }
 
