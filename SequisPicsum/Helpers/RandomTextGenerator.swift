@@ -45,8 +45,8 @@ struct RandomTextGenerator {
     
     private static func loadJSONStringArray(filename: String) -> [String] {
         guard let url = Bundle.main.url(forResource: filename, withExtension: "json"),
-            let data = try? Data(contentsOf: url),
-            let array = try? JSONDecoder().decode([String].self, from: data)
+              let data = try? Data(contentsOf: url),
+              let array = try? JSONDecoder().decode([String].self, from: data)
         else {
             print("failed to load or decode \(filename).json")
             return []
