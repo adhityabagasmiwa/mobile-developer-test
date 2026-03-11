@@ -15,7 +15,8 @@ struct ImageDetailView: View {
         VStack(spacing: 0) {
             KFImage(URL(string: "https://picsum.photos/id/\(viewModel.image.id ?? "")/300"))
                 .placeholder {
-                    Color.gray.opacity(0.3)
+                    ProgressView()
+                        .padding()
                 }
                 .setProcessor(DownsamplingImageProcessor(size: CGSize(width: 300, height: 300)))
                 .scaleFactor(UIScreen.main.scale)
@@ -99,14 +100,15 @@ struct CommentRowView: View {
     
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
-            Circle()
-                .fill(Color.gray.opacity(0.8))
-                .frame(width: 40, height: 40)
-                .overlay(
-                    Text(comment.authorInitial ?? "")
-                        .font(.subheadline)
-                        .foregroundColor(.white)
-                )
+            ZStack {
+                Circle()
+                    .fill(Color.gray.opacity(0.8))
+                    .frame(width: 40, height: 40)
+                
+                Text(comment.authorInitial ?? "")
+                    .font(.subheadline)
+                    .foregroundColor(.white)
+            }
             
             VStack(alignment: .leading, spacing: 4) {
                 Text(comment.authorFullName ?? "")

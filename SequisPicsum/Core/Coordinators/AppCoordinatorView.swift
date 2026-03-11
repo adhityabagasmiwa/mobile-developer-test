@@ -9,9 +9,8 @@ import SwiftUI
 
 struct AppCoordinatorView: View {
     @StateObject private var coordinator = AppCoordinator()
+    @StateObject private var splashViewModel = SplashViewModel()
     private let container: DependencyContainerProtocol
-    
-    @State private var showSplash = true
     
     init(container: DependencyContainerProtocol) {
         self.container = container
@@ -19,8 +18,8 @@ struct AppCoordinatorView: View {
     
     var body: some View {
         Group {
-            if showSplash {
-                SplashView()
+            if !splashViewModel.isFinished {
+                SplashView(viewModel: splashViewModel)
                     .transition(.opacity)
             } else {
                 NavigationStack(path: $coordinator.path) {
@@ -30,20 +29,13 @@ struct AppCoordinatorView: View {
                 .environmentObject(coordinator)
             }
         }
-        .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                withAnimation {
-                    showSplash = false
-                }
-            }
-        }
     }
     
     @ViewBuilder
     func build(_ route: AppRoute) -> some View {
         switch route {
         case .splash:
-            SplashView()
+            SplashView(viewModel: splashViewModel)
         case .imageList:
             ImageListView(
                 viewModel: ImageListViewModel(

@@ -99,7 +99,8 @@ struct ImagePicsumView: View {
         HStack(spacing: 0) {
             KFImage(URL(string: "https://picsum.photos/id/\(image.id ?? "")/200"))
                 .placeholder {
-                    Color.gray.opacity(0.3)
+                    ProgressView()
+                        .padding()
                 }
                 .setProcessor(DownsamplingImageProcessor(size: CGSize(width: 200, height: 200)))
                 .scaleFactor(UIScreen.main.scale)
