@@ -20,19 +20,11 @@
 			remoteGlobalIDString = 3691BA1D2F5FD3F0009E9C20;
 			remoteInfo = SequisPicsum;
 		};
-		3691BA392F5FD3F3009E9C20 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3691BA162F5FD3F0009E9C20 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3691BA1D2F5FD3F0009E9C20;
-			remoteInfo = SequisPicsum;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		3691BA1E2F5FD3F0009E9C20 /* SequisPicsum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SequisPicsum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3691BA2E2F5FD3F3009E9C20 /* SequisPicsumTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SequisPicsumTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3691BA382F5FD3F3009E9C20 /* SequisPicsumUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SequisPicsumUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -44,11 +36,6 @@
 		3691BA312F5FD3F3009E9C20 /* SequisPicsumTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = SequisPicsumTests;
-			sourceTree = "<group>";
-		};
-		3691BA3B2F5FD3F3009E9C20 /* SequisPicsumUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = SequisPicsumUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -71,13 +58,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3691BA352F5FD3F3009E9C20 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -86,7 +66,6 @@
 			children = (
 				3691BA202F5FD3F0009E9C20 /* SequisPicsum */,
 				3691BA312F5FD3F3009E9C20 /* SequisPicsumTests */,
-				3691BA3B2F5FD3F3009E9C20 /* SequisPicsumUITests */,
 				3691BA1F2F5FD3F0009E9C20 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -96,7 +75,6 @@
 			children = (
 				3691BA1E2F5FD3F0009E9C20 /* SequisPicsum.app */,
 				3691BA2E2F5FD3F3009E9C20 /* SequisPicsumTests.xctest */,
-				3691BA382F5FD3F3009E9C20 /* SequisPicsumUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -152,29 +130,6 @@
 			productReference = 3691BA2E2F5FD3F3009E9C20 /* SequisPicsumTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		3691BA372F5FD3F3009E9C20 /* SequisPicsumUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3691BA482F5FD3F3009E9C20 /* Build configuration list for PBXNativeTarget "SequisPicsumUITests" */;
-			buildPhases = (
-				3691BA342F5FD3F3009E9C20 /* Sources */,
-				3691BA352F5FD3F3009E9C20 /* Frameworks */,
-				3691BA362F5FD3F3009E9C20 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				3691BA3A2F5FD3F3009E9C20 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				3691BA3B2F5FD3F3009E9C20 /* SequisPicsumUITests */,
-			);
-			name = SequisPicsumUITests;
-			packageProductDependencies = (
-			);
-			productName = SequisPicsumUITests;
-			productReference = 3691BA382F5FD3F3009E9C20 /* SequisPicsumUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -189,10 +144,6 @@
 						CreatedOnToolsVersion = 16.2;
 					};
 					3691BA2D2F5FD3F3009E9C20 = {
-						CreatedOnToolsVersion = 16.2;
-						TestTargetID = 3691BA1D2F5FD3F0009E9C20;
-					};
-					3691BA372F5FD3F3009E9C20 = {
 						CreatedOnToolsVersion = 16.2;
 						TestTargetID = 3691BA1D2F5FD3F0009E9C20;
 					};
@@ -218,7 +169,6 @@
 			targets = (
 				3691BA1D2F5FD3F0009E9C20 /* SequisPicsum */,
 				3691BA2D2F5FD3F3009E9C20 /* SequisPicsumTests */,
-				3691BA372F5FD3F3009E9C20 /* SequisPicsumUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -232,13 +182,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		3691BA2C2F5FD3F3009E9C20 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3691BA362F5FD3F3009E9C20 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -262,13 +205,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3691BA342F5FD3F3009E9C20 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -276,11 +212,6 @@
 			isa = PBXTargetDependency;
 			target = 3691BA1D2F5FD3F0009E9C20 /* SequisPicsum */;
 			targetProxy = 3691BA2F2F5FD3F3009E9C20 /* PBXContainerItemProxy */;
-		};
-		3691BA3A2F5FD3F3009E9C20 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3691BA1D2F5FD3F0009E9C20 /* SequisPicsum */;
-			targetProxy = 3691BA392F5FD3F3009E9C20 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -508,40 +439,6 @@
 			};
 			name = Release;
 		};
-		3691BA492F5FD3F3009E9C20 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5FJ9XT6RUL;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = id.sequis.mobile.test.SequisPicsumUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = SequisPicsum;
-			};
-			name = Debug;
-		};
-		3691BA4A2F5FD3F3009E9C20 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5FJ9XT6RUL;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = id.sequis.mobile.test.SequisPicsumUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = SequisPicsum;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -568,15 +465,6 @@
 			buildConfigurations = (
 				3691BA462F5FD3F3009E9C20 /* Debug */,
 				3691BA472F5FD3F3009E9C20 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3691BA482F5FD3F3009E9C20 /* Build configuration list for PBXNativeTarget "SequisPicsumUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3691BA492F5FD3F3009E9C20 /* Debug */,
-				3691BA4A2F5FD3F3009E9C20 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
