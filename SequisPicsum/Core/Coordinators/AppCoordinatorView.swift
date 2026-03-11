@@ -51,6 +51,16 @@ struct AppCoordinatorView: View {
                     getImagesUseCase: container.getImagesPicsumUseCase
                 )
             )
+        case .imageDetail(let image):
+            ImageDetailView(
+                viewModel: ImageDetailViewModel(
+                    image: image,
+                    coordinator: coordinator,
+                    saveCommentUseCase: container.saveCommentsUseCase,
+                    getCommentsUseCase: container.getCommentsUseCase,
+                    deleteCommentUseCase: container.deleteCommentUseCase
+                )
+            )
         }
     }
 }

@@ -16,6 +16,7 @@ struct ImageListView: View {
             customHeaderView
             contentScrollView
         }
+        .navigationTitle("Image List")
         .toolbar(.hidden, for: .navigationBar)
         .background(Color.white.ignoresSafeArea(edges: .top))
         .onAppear {
@@ -42,13 +43,18 @@ struct ImageListView: View {
     
     private var imageRowView: some View {
         ForEach(viewModel.images) { image in
-            ImagePicsumView(image: image)
-                .padding(.horizontal, 16)
-                .onAppear {
-                    if image == viewModel.images.last {
-                        viewModel.getImages()
-                    }
+            Button(action: {
+                viewModel.navigateToDetail(image: image)
+            }) {
+                ImagePicsumView(image: image)
+            }
+            .buttonStyle(PlainButtonStyle())
+            .padding(.horizontal, 16)
+            .onAppear {
+                if image == viewModel.images.last {
+                    viewModel.getImages()
                 }
+            }
         }
     }
     
