@@ -8,11 +8,24 @@
 import SwiftUI
 
 struct SplashView: View {
+    @StateObject var viewModel: SplashViewModel
+    
     var body: some View {
-        Text("Splash")
+        ZStack {
+            Color.white
+                .ignoresSafeArea()
+            
+            Text("Sequis Picsum")
+                .font(.title)
+                .fontWeight(.bold)
+                .foregroundColor(.black)
+        }
+        .onAppear {
+            viewModel.start()
+        }
     }
 }
 
 #Preview {
-    SplashView()
+    SplashView(viewModel: SplashViewModel())
 }
